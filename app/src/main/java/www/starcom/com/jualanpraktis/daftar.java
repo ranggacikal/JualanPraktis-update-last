@@ -161,6 +161,22 @@ public class daftar extends AppCompatActivity implements View.OnClickListener {
 
 //        UlangPass();
         btn_daftar.setOnClickListener(this);
+
+        imgKebijakanUncheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imgKebijakanUncheck.setVisibility(View.GONE);
+                imgKebijakanChecked.setVisibility(View.VISIBLE);
+            }
+        });
+
+        imgKebijakanChecked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imgKebijakanUncheck.setVisibility(View.VISIBLE);
+                imgKebijakanChecked.setVisibility(View.GONE);
+            }
+        });
 //        uploadPicture.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -272,22 +288,6 @@ public class daftar extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-
-        imgKebijakanUncheck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgKebijakanUncheck.setVisibility(View.GONE);
-                imgKebijakanChecked.setVisibility(View.VISIBLE);
-            }
-        });
-
-        imgKebijakanChecked.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgKebijakanUncheck.setVisibility(View.VISIBLE);
-                imgKebijakanChecked.setVisibility(View.GONE);
-            }
-        });
 
         String password = edtPassword.getText().toString();
         int min_length = 6;
