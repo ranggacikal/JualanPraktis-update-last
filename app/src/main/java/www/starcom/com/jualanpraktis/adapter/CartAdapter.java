@@ -437,8 +437,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                     finalItem.put("jumlah", String.valueOf(value));
                     hargaItem = Integer.parseInt(finalItem.get("harga")) * Integer.parseInt(finalItem.get("jumlah"));
                     viewHolder.lbl_nominal.setText(FormatText.rupiahFormat(hargaItem));
+                    viewHolder.harga_dropshipper.setText("");
                     keranjang.onChangeData();
-                    notifyDataSetChanged();
+//                    notifyDataSetChanged();
                 }
             }
         });
@@ -457,7 +458,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                     hargaItem = Integer.parseInt(finalItem.get("harga")) * Integer.parseInt(finalItem.get("jumlah"));
                     viewHolder.lbl_nominal.setText(FormatText.rupiahFormat(hargaItem));
                     keranjang.onChangeData();
-                    notifyDataSetChanged();
+//                    notifyDataSetChanged();
                 }
             }
         });

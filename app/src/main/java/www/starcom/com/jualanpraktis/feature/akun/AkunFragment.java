@@ -112,7 +112,7 @@ public class AkunFragment extends Fragment implements View.OnClickListener{
     private CircleImageView imageEdit, imageProfile2;
     private String PicturePath;
     private RelativeLayout relativeStatusTransaksi, relativeRincianRekening, relativeFavorit, btn_logout, btn_ubah_password,
-            relativeBantuan;
+            relativeBantuan, relativeNilaiKami;
     private CardView cardPesananSaya;
     //public static final String URL_Image = "https://trading.my.id/files/drp/";
     public static final String URL_Update = "https://jualanpraktis.net/android/update_akun.php";
@@ -179,6 +179,7 @@ public class AkunFragment extends Fragment implements View.OnClickListener{
         imageProfile2 = rootView.findViewById(R.id.image_profile2);
         imageEdit = rootView.findViewById(R.id.image_edit);
         txtPesnghasilanSayaAkun = rootView.findViewById(R.id.text_penghasilan_saya_akun);
+        relativeNilaiKami = rootView.findViewById(R.id.relative_nilai_kami);
 
 //        btn_ubah_profil = rootView.findViewById(R.id.btn_ubah_profil);
         btn_ubah_password = rootView.findViewById(R.id.btn_ubah_password);
@@ -250,6 +251,18 @@ public class AkunFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), BantuanActivity.class));
+            }
+        });
+
+        relativeNilaiKami.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String appPackageName = getActivity().getPackageName(); // getPackageName() from Context or Activity object
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                }
             }
         });
 
