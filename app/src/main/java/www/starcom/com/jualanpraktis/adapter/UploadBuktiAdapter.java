@@ -1,6 +1,7 @@
 package www.starcom.com.jualanpraktis.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,8 +49,10 @@ public class UploadBuktiAdapter extends RecyclerView.Adapter<UploadBuktiAdapter.
         String gambar = item.get("gambar");
         String url = "https://jualanpraktis.net/img/"+gambar;
 
+        Log.d("urlImageUpload", "onBindViewHolder: "+url);
+
         Glide.with(context)
-                .load(url)
+                .load(gambar)
                 .error(R.drawable.logo_jualan_merah)
                 .into(holder.imgProdukRincian);
 
