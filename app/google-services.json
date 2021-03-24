@@ -1,57 +1,41 @@
 {
   "project_info": {
-    "project_number": "151248524738",
-    "project_id": "jualanpraktis-1609573754515",
-    "storage_bucket": "jualanpraktis-1609573754515.appspot.com"
+    "project_number": "456116190640",
+    "project_id": "jualanpraktis-300803",
+    "storage_bucket": "jualanpraktis-300803.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:151248524738:android:c44bb6a6e38716cd64f25b",
+        "mobilesdk_app_id": "1:456116190640:android:a7511678f18004f2812a75",
         "android_client_info": {
           "package_name": "www.starcom.com.jualanpraktis"
         }
       },
       "oauth_client": [
         {
-          "client_id": "151248524738-eefnqd3paekrhgghj1moddn3rpm2ce91.apps.googleusercontent.com",
+          "client_id": "456116190640-lvofai0r2lskl5oeol8rtuk67rfn64r1.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "www.starcom.com.jualanpraktis",
-            "certificate_hash": "15f5232e5bf63b1316c91e17c90afd2e4a5c83b9"
+            "certificate_hash": "bad21c8c7de588bdc54a0bde89c83983155739ec"
           }
         },
         {
-          "client_id": "151248524738-hct4rbe1f3o96929ltdso8sbks791sje.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "www.starcom.com.jualanpraktis",
-            "certificate_hash": "8273de6b98907179c883bc5c177a85f46a292204"
-          }
-        },
-        {
-          "client_id": "151248524738-rf9fsgj0g0p1mjl6rf3qhrof4fncn475.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "www.starcom.com.jualanpraktis",
-            "certificate_hash": "b637e1cace64ed5070fa0cd8fda1d48e0125c2d7"
-          }
-        },
-        {
-          "client_id": "151248524738-1n29chbplp18og56h0f9eekkrh14h02m.apps.googleusercontent.com",
+          "client_id": "456116190640-06tdmh0mm0r8hacck4socs695dutbu4q.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB1GoNbe07fXJ3vYdCLCUswc99PNdKyNks"
+          "current_key": "AIzaSyBfa7mQCxfuz-VD_2rDPZqCBL_Am3qHXdo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "151248524738-1n29chbplp18og56h0f9eekkrh14h02m.apps.googleusercontent.com",
+              "client_id": "456116190640-06tdmh0mm0r8hacck4socs695dutbu4q.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
