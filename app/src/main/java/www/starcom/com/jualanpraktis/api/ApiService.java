@@ -28,6 +28,7 @@ import www.starcom.com.jualanpraktis.model_retrofit.model_penggunaan_app.Respons
 import www.starcom.com.jualanpraktis.model_retrofit.model_penghasilan_selesai.ResponseDataPenghasilanSelesai;
 import www.starcom.com.jualanpraktis.model_retrofit.model_tips.ResponseDataTips;
 import www.starcom.com.jualanpraktis.model_retrofit.periode.ResponseDataPeriode;
+import www.starcom.com.jualanpraktis.model_retrofit.rekening_jp.ResponseDataRekening;
 import www.starcom.com.jualanpraktis.model_retrofit.tukar_pesanan.ResponseTukarPesanan;
 
 public interface ApiService {
@@ -122,5 +123,8 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("data-check.php")
     Call<ResponseDataCheck> dataCheck(@Field("id_member") String id_member);
+
+    @GET("bank-jp.php")
+    Call<ResponseDataRekening> dataRekening();
 
 }

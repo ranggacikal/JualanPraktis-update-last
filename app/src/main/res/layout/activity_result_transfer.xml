@@ -82,9 +82,90 @@
 Silahkan lakukan pembayaran paling lambat 2 jam setelah pemesanan. Upload bukti transfer
 pada menu pesanan" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp"
+                android:background="#F5F5F5" />
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/nuunito_reguler"
+                    android:text="Silahkan Transfer Ke :"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/text_no_rekening_transfer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nuunito_bold"
+                        android:text="Nomor Rekening"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <ImageView
+                        android:id="@+id/img_salin_rekening_transfer"
+                        android:layout_centerVertical="true"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_toRightOf="@+id/text_no_rekening_transfer"
+                        android:layout_marginEnd="7dp"
+                        android:src="@drawable/icon_copy_red"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/text_nama_perusahaan_transfer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="@font/nuunito_bold"
+                    android:text="Nama Perusahaan"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/text_nama_bank_transfer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="@font/nuunito_bold"
+                    android:text="Nama BANK"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp"
+                android:background="#F5F5F5" />
+
             <LinearLayout
                 android:id="@+id/ll_transfer"
                 android:layout_width="match_parent"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
@@ -257,6 +338,7 @@ pada menu pesanan" />
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/bg_green"
+                android:visibility="gone"
                 android:backgroundTint="@android:color/holo_blue_dark"
                 android:text="Konfirmasi Transfer"
                 android:textColor="@android:color/white" />

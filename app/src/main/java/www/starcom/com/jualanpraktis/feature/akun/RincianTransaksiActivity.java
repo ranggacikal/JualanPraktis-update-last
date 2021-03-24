@@ -360,6 +360,7 @@ public class RincianTransaksiActivity extends AppCompatActivity {
                                         intent.putExtra("tanggal", txtTanggal.getText().toString());
                                         intent.putExtra("status", txtStatus.getText().toString());
                                         intent.putExtra("total_bayar", total);
+                                        intent.putExtra("status_kirim", getIntent().getStringExtra("status_kirim"));
                                         startActivity(intent);
                                     }
                                 });

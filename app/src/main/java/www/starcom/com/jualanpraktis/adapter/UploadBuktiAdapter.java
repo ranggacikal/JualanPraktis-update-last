@@ -46,7 +46,7 @@ public class UploadBuktiAdapter extends RecyclerView.Adapter<UploadBuktiAdapter.
         pref = new Pref(context.getApplicationContext());
 
         String gambar = item.get("gambar");
-        String url = "https://trading.my.id/img/"+gambar;
+        String url = "https://jualanpraktis.net/img/"+gambar;
 
         Glide.with(context)
                 .load(url)

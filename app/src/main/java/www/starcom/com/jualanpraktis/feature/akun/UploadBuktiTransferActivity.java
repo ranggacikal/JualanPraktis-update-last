@@ -6,11 +6,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,16 +38,25 @@ import org.json.JSONObject;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import www.starcom.com.jualanpraktis.EditAkunActivity;
 import www.starcom.com.jualanpraktis.Login.SharedPrefManager;
 import www.starcom.com.jualanpraktis.Login.loginuser;
 import www.starcom.com.jualanpraktis.MainActivity;
 import www.starcom.com.jualanpraktis.R;
+import www.starcom.com.jualanpraktis.Spinner.Gender;
 import www.starcom.com.jualanpraktis.adapter.TukarPesananAdapter;
 import www.starcom.com.jualanpraktis.adapter.UploadBuktiAdapter;
+import www.starcom.com.jualanpraktis.api.ConfigRetrofit;
 import www.starcom.com.jualanpraktis.feature.produk.ProdukDetailActivity;
+import www.starcom.com.jualanpraktis.model_retrofit.rekening_jp.DataItem;
+import www.starcom.com.jualanpraktis.model_retrofit.rekening_jp.ResponseDataRekening;
 
 public class UploadBuktiTransferActivity extends AppCompatActivity {
 
@@ -52,6 +66,9 @@ public class UploadBuktiTransferActivity extends AppCompatActivity {
     ImageView imgUpload;
     ShimmerFrameLayout shimmerBelumDibayar;
     loginuser user;
+
+    TextView txtNoRekening, txtNamaPerusahaan, txtNamaBank;
+    ImageView imgSalin;
 
     ArrayList<HashMap<String, String>> listBelumDibayar = new ArrayList<>();
 
@@ -77,6 +94,10 @@ public class UploadBuktiTransferActivity extends AppCompatActivity {
         linearTambahMedia = findViewById(R.id.tambah_upload_bukti);
         imgUpload = findViewById(R.id.img_upload_bukti);
         shimmerBelumDibayar = findViewById(R.id.shimmer_upload_bukti);
+        txtNoRekening = findViewById(R.id.text_no_rekening_upload);
+        txtNamaBank = findViewById(R.id.text_nama_bank_upload);
+        txtNamaPerusahaan = findViewById(R.id.text_nama_perusahaan_upload);
+        imgSalin = findViewById(R.id.img_salin_rekening_upload);
 
         rvProdukBelumDibayar.setHasFixedSize(true);
         rvProdukBelumDibayar.setLayoutManager(new LinearLayoutManager(UploadBuktiTransferActivity.this));
@@ -84,6 +105,7 @@ public class UploadBuktiTransferActivity extends AppCompatActivity {
         txtId.setText(getIntent().getStringExtra("id_transaksi"));
         txtTanggal.setText(getIntent().getStringExtra("tanggal"));
         txtStatus.setText(getIntent().getStringExtra("status"));
+
 
         total_bayar = getIntent().getStringExtra("total_bayar");
         Log.d("getTotalBayar", "onCreate: "+total_bayar);
@@ -106,7 +128,55 @@ public class UploadBuktiTransferActivity extends AppCompatActivity {
         });
 
         loadProduk();
+        loadDataRekening();
 
+
+    }
+
+    private void loadDataRekening() {
+
+        AndroidNetworking.get("https://jualanpraktis.net/android/bank-jp.php")
+                .setTag(UploadBuktiTransferActivity.this)
+                .setPriority(Priority.LOW)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // do anything with response
+                        try {
+
+                            JSONArray array = response.getJSONArray("data");
+                            for (int i = 0; i < array.length(); i++) {
+                                JSONObject obj = array.getJSONObject(i);
+                                txtNoRekening.setText(obj.getString("rekening"));
+                                txtNamaPerusahaan.setText(obj.getString("pemilik_rekening"));
+                                txtNamaBank.setText(obj.getString("nama_bank"));
+                            }
+
+                            imgSalin.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    String norekening = txtNoRekening.getText().toString();
+                                    String nama_bank = txtNamaBank.getText().toString();
+
+                                    ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                                    ClipData clip = ClipData.newPlainText(nama_bank, norekening);
+                                    clipboard.setPrimaryClip(clip);
+
+                                    Toast.makeText(UploadBuktiTransferActivity.this,"Berhasil menyalin no rekening",Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        // handle error
+                    }
+                });
 
     }
 
@@ -196,6 +266,7 @@ public class UploadBuktiTransferActivity extends AppCompatActivity {
 
         AndroidNetworking.post(url)
                 .addBodyParameter("id_transaksi", getIntent().getStringExtra("id_transaksi"))
+                .addBodyParameter("status_kirim", getIntent().getStringExtra("status_kirim"))
                 .setTag(UploadBuktiTransferActivity.this)
                 .setPriority(Priority.MEDIUM)
                 .setOkHttpClient(okHttpClient)

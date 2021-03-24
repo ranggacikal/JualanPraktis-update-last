@@ -18,9 +18,14 @@ import android.widget.Toast;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.androidnetworking.interfaces.UploadProgressListener;
 import com.github.dhaval2404.imagepicker.ImagePicker;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -39,6 +44,7 @@ import www.starcom.com.jualanpraktis.R;
 import www.starcom.com.jualanpraktis.adapter.ListBankAdapter;
 import www.starcom.com.jualanpraktis.api.ConfigRetrofit;
 import www.starcom.com.jualanpraktis.databinding.ActivityResultTransferBinding;
+import www.starcom.com.jualanpraktis.feature.akun.UploadBuktiTransferActivity;
 import www.starcom.com.jualanpraktis.feature.pembayaran.FormatText;
 import www.starcom.com.jualanpraktis.model.DataItem;
 import www.starcom.com.jualanpraktis.model.ResponseGetDataBank;
@@ -89,7 +95,56 @@ public class ResultTransferActivity extends AppCompatActivity {
 
         loadListBank();
 
+        loadRekening();
+
        klik();
+    }
+
+    private void loadRekening() {
+
+        AndroidNetworking.get("https://jualanpraktis.net/android/bank-jp.php")
+                .setTag(ResultTransferActivity.this)
+                .setPriority(Priority.LOW)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // do anything with response
+                        try {
+
+                            JSONArray array = response.getJSONArray("data");
+                            for (int i = 0; i < array.length(); i++) {
+                                JSONObject obj = array.getJSONObject(i);
+                                binding.textNoRekeningTransfer.setText(obj.getString("rekening"));
+                                binding.textNamaPerusahaanTransfer.setText(obj.getString("pemilik_rekening"));
+                                binding.textNamaBankTransfer.setText(obj.getString("nama_bank"));
+                            }
+
+                            binding.imgSalinRekeningTransfer.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    String norekening = binding.textNoRekeningTransfer.getText().toString();
+                                    String nama_bank = binding.textNamaBankTransfer.getText().toString();
+
+                                    ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                                    ClipData clip = ClipData.newPlainText(nama_bank, norekening);
+                                    clipboard.setPrimaryClip(clip);
+
+                                    Toast.makeText(ResultTransferActivity.this,"Berhasil menyalin no rekening",Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        // handle error
+                    }
+                });
+
     }
 
     private void loadListBank() {
