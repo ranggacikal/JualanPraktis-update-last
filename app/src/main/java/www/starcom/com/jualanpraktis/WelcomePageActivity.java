@@ -80,7 +80,7 @@ public class WelcomePageActivity extends YouTubeBaseActivity {
             public void onClick(View v) {
                 youTubeThumbnailView.setVisibility(View.GONE);
                 youTubePlayerView.setVisibility(View.VISIBLE);
-                youTubePlayerView.initialize("AIzaSyDNd1vGpd_aKAhrQIN6xJ5dBiG0N6yAsN0", onInitializedListener);
+                youTubePlayerView.initialize("AIzaSyBfa7mQCxfuz-VD_2rDPZqCBL_Am3qHXdo", onInitializedListener);
                 imgPlay.setVisibility(View.GONE);
                 Log.d("dataVideo", "onClick: "+getVideo);
             }

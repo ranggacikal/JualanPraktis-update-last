@@ -2,8 +2,8 @@
     <string name="app_name">JualanPraktis</string>
 
     <!--FAcebook-->
-    <string name="facebook_app_id">2985898851643418</string>
-    <string name="fb_login_protocol_scheme">fb2985898851643418</string>
+    <string name="facebook_app_id">209726827600184</string>
+    <string name="fb_login_protocol_scheme">fb209726827600184</string>
 
     <string name="title_activity_maps">Map</string>
 
@@ -22,6 +22,6 @@
     <string name="belaja_kosong_p2">Kami akan ingatkan anda setiap bulan untuk menebus belajaan anda</string>
     <string name="belanja_kosong_p3">Anda juga bisa menuliskan barang-barang belanjaan anda yang tidak ada di aplikasi kami supaya kami dapat melengkapi untuk anda.</string>
 
-    <string name="server_client_id">718990593843-9orous011odfjn5ms63gd5feg18jnis6.apps.googleusercontent.com</string>
+    <string name="server_client_id">456116190640-06tdmh0mm0r8hacck4socs695dutbu4q.apps.googleusercontent.com</string>
 
 </resources>

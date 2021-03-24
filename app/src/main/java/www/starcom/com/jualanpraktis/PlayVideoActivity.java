@@ -70,7 +70,7 @@ public class PlayVideoActivity extends YouTubeBaseActivity {
         imgPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                youTubePlayerView.initialize("AIzaSyDNd1vGpd_aKAhrQIN6xJ5dBiG0N6yAsN0", onInitializedListener);
+                youTubePlayerView.initialize("AIzaSyBfa7mQCxfuz-VD_2rDPZqCBL_Am3qHXdo", onInitializedListener);
                 imgPlay.setVisibility(View.GONE);
                 youTubePlayerView.setVisibility(View.VISIBLE);
                 imgThumbnail.setVisibility(View.GONE);
