@@ -417,6 +417,7 @@ public class DetailRekeningBankActivity extends AppCompatActivity {
                         );
 
                         SharedPrefManager.getInstance(DetailRekeningBankActivity.this).userLogin(userUpdateBank);
+                        finish();
 
                     } else {
                         Toast.makeText(DetailRekeningBankActivity.this, "Gagal Update", Toast.LENGTH_SHORT).show();

@@ -452,6 +452,7 @@ public class FormTransaksiActivity extends AppCompatActivity {
                             int total_bayar_penerima = nominal_belanja + nominal_keuntungan;
                             binding.lblTotalBayarPenerima.setText("Rp" + NumberFormat.getInstance().format(total_bayar_penerima));
                             binding.lblHargaTotal.setText("Rp" + NumberFormat.getInstance().format(total_bayar_penerima));
+                            Log.d("listProdukTransaksi", "onResponse: "+listProduk);
 
 
                         } catch (JSONException e) {

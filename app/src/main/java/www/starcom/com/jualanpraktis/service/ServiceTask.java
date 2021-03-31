@@ -79,7 +79,7 @@ public class ServiceTask extends Service  {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Toast.makeText(this, "Service destroyed by user.", Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "Service destroyed by user.", Toast.LENGTH_LONG).show();
     }
 
     //

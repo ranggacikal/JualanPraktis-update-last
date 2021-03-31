@@ -97,13 +97,8 @@ public class MainActivity extends AppCompatActivity {
 
         int PERMISSION_ALL = 1;
         String[] PERMISSIONS = {
-
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.ACCESS_BACKGROUND_LOCATION,
-                Manifest.permission.CAMERA};
+                Manifest.permission.READ_EXTERNAL_STORAGE};
         if(!hasPermissions(this, PERMISSIONS)){
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
         }

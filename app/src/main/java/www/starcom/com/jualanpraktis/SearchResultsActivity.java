@@ -84,7 +84,7 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchVi
         searchView.setIconified(false);
         searchView.setOnQueryTextListener(this);
         searchView.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
-         searchAutoComplete = (SearchView.SearchAutoComplete) searchView.findViewById(androidx.appcompat.R.id.search_src_text);
+        searchAutoComplete = (SearchView.SearchAutoComplete) searchView.findViewById(androidx.appcompat.R.id.search_src_text);
         searchAutoComplete.setDropDownBackgroundResource(android.R.color.white);
 
 
@@ -304,6 +304,7 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchVi
                     objectSub = mGson.fromJson(response, objectsub.ObjectSub.class);
                     adaptersub = new adaptersub(getApplicationContext(), objectSub.sub1_kategori1);
                     recyclerView.setAdapter(adaptersub);
+                    Log.d("testDataSearch", "onResponse: "+objectSub.sub1_kategori1);
                 }catch (Exception e){
                     Log.d(TAG, "onResponse: ",e);
                 }

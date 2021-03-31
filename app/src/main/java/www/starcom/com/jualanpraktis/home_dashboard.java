@@ -1,5 +1,6 @@
 package www.starcom.com.jualanpraktis;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -1172,6 +1173,11 @@ public class home_dashboard extends Fragment implements SwipeRefreshLayout.OnRef
 
     private void getProdukTerlaris(){
 
+        ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Memuat Produk Terlaris");
+        progressDialog.setTitle("Mohon Tunggu");
+        progressDialog.show();
+
         recyclerView.setVisibility(View.GONE);
         // shimmerAllProduk.setVisibility(View.VISIBLE);
         // shimmerAllProduk.startShimmerAnimation();
@@ -1184,6 +1190,7 @@ public class home_dashboard extends Fragment implements SwipeRefreshLayout.OnRef
                     @Override
                     public void onResponse(objectsub.ObjectSub response) {
                         // swipeRefreshLayout.setRefreshing(false);
+                        progressDialog.dismiss();
                         swipeRefreshLayout.setRefreshing(false);
                         shimmer.stopShimmerAnimation();
                         shimmer.setVisibility(View.GONE);
@@ -1193,6 +1200,7 @@ public class home_dashboard extends Fragment implements SwipeRefreshLayout.OnRef
                         recyclerView.setAdapter(adaptersub);
 
                         if (response.sub1_kategori1.isEmpty()){
+                            progressDialog.dismiss();
                             txtKosong.setVisibility(View.VISIBLE);
                             recyclerView.setVisibility(View.GONE);
                             shimmer.stopShimmerAnimation();
@@ -1205,6 +1213,7 @@ public class home_dashboard extends Fragment implements SwipeRefreshLayout.OnRef
                     @Override
                     public void onError(ANError anError) {
                         //  swipeRefreshLayout.setRefreshing(false);
+                        progressDialog.dismiss();
                         swipeRefreshLayout.setRefreshing(false);
                         shimmer.stopShimmerAnimation();
                         shimmer.setVisibility(View.GONE);

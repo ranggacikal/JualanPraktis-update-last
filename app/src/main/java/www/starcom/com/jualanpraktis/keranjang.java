@@ -651,6 +651,7 @@ public class keranjang extends Fragment implements View.OnClickListener {
                         Log.d(TAG, "Total = " + totalbelanja);
                         Log.d(TAG, "Berat = " + Integer.toString(berat));
                         Log.d("paramTransaksi", "onResponse: "+param.toString());
+                        Log.d("paramTransaksi", "cartListData: "+param.toString());
                         Log.d("checkListHargaJual", "proccess: "+cartList);
                     }
 

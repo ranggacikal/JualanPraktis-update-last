@@ -147,9 +147,10 @@ public class adaptersub extends RecyclerView.Adapter<holdersub> {
         holder.txtKota.setText(results.get(position).kota);
 
         String total_stok = results.get(position).total_stok;
-        String stok = results.get(position).stok;
 
-        if (total_stok.equals("0") || total_stok.equals("null") || total_stok == null){
+        if (total_stok==null) {
+            holder.relativeStokHabis.setVisibility(View.VISIBLE);
+        } else if (total_stok.equals("0") || total_stok.equals("null")){
             holder.relativeStokHabis.setVisibility(View.VISIBLE);
         }else{
             holder.relativeStokHabis.setVisibility(View.GONE);

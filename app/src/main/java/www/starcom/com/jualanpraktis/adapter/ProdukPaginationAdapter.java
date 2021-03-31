@@ -238,6 +238,12 @@ public class ProdukPaginationAdapter extends RecyclerView.Adapter<RecyclerView.V
 
                 if (total_stok.equals("0") || total_stok.equals("null") || total_stok == null){
                     viewHolder.relativeStokKosong.setVisibility(View.VISIBLE);
+                    viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(context, "Stok Habis", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }else {
                     viewHolder.relativeStokKosong.setVisibility(View.GONE);
                     viewHolder.cardView.setOnClickListener(new View.OnClickListener() {

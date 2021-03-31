@@ -249,6 +249,10 @@ public class RincianTransaksiActivity extends AppCompatActivity {
                         Toast.makeText(RincianTransaksiActivity.this, "Berhasil Menyelesaikan Pesanan",
                                 Toast.LENGTH_SHORT).show();
                         alertDialog.dismiss();
+                        Intent intent = new Intent(RincianTransaksiActivity.this, StatusTransaksiActivity.class);
+                        intent.putExtra("extraPesananSelesai", "pesananSelesai");
+                        startActivity(intent);
+                        finish();
 
 
                         try {

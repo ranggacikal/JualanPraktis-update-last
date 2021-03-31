@@ -71,6 +71,7 @@ public class StatusTransaksiActivity extends AppCompatActivity {
         setupTabLayout();
 
         String handleBelumBayar = getIntent().getStringExtra("extraUpload");
+        String handlePesananSelesai = getIntent().getStringExtra("extraPesananSelesai");
 
         if (handleBelumBayar!=null){
 
@@ -79,6 +80,15 @@ public class StatusTransaksiActivity extends AppCompatActivity {
                 TabLayout.Tab tab = tabLayout.getTabAt(1);
                 tab.select();
             }
+        }else {
+
+            if (handlePesananSelesai != null) {
+                if (handlePesananSelesai.equals("pesananSelesai")) {
+                    TabLayout.Tab tabSelesai = tabLayout.getTabAt(8);
+                    tabSelesai.select();
+                }
+            }
+
         }
 
     }
